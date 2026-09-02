@@ -5,8 +5,7 @@
 int array[100];
 ```
 ### 2. Size of array elements
-#### The size of each element in an array depends entirely on the data type. For instance, the size of an integer array element is 4 bytes and the size of a character array element is 1 byte. However, the size of a string array element does not contain a set number of bytes due to the varying number of characters it may contain. 
-#### The size is dependent upon the amount of information stored in the data type. Each character array element can only hold a single character whereas integers may have several numerals. A string array element may differ in size considerably from the other two data types, because each character in a string is being stored in a different memory address. 
+#### The size of each element in an array depends entirely on the data type. For instance, the size of an integer array element is 4 bytes and the size of a character array element is 1 byte. Each character array element can only hold a single character whereas integers may have several numerals. However, the size of a string array element does not contain a set number of bytes. A string array element may differ in size considerably from the other two data types, because each character in a string is being stored in a different memory address. 
 #### In the example below, each call to sizeof will output a different size to the console.
 ```C++
 char array1[50];
