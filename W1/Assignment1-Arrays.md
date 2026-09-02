@@ -1,4 +1,5 @@
 # Homework 1-2: Arrays
+### Video explanation: https://sdccd.us-west-2.instructuremedia.com/embed/69357c6e-fb4f-4265-87a8-602f8c5cbd25
 ### 1. Creating arrays
 #### Creating an array of 100 elements requires declaring it as a particular data type and entering that number of elements in the square bracket.
 ```C++
