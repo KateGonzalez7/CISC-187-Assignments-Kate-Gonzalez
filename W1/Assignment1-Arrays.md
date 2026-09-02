@@ -25,7 +25,7 @@ cout << "Int array element size is " << sizeof(array3[0]);
 #### Deletion at beginning of array: This operation involves 100 steps for the deletion of the first element as well as the 99 shifts for the remaining elements. An array index cannot be left empty when the rest of the array is filled with values. This prevents users from accessing a non-existent element.
 #### Deletion at end of array: Deleting the last element of the array is simply 1 step as it does not require any shifts.
 ### 4. Searching for particular value
-#### Regardless of how many times the word "apple" appears, the program continues to run with the assumption that there may possibly be the word "apple" at the last index of the array. It does not know until it checks every element. Therefore, it will take N steps to find all the "apples."
+#### Regardless of how many times the word "apple" appears, the program continues to run with the assumption that there may possibly be the word "apple" at the last index of the array. It does not know until it checks every element. Therefore, it will take N steps to find all the "apple."
 ### 5. Array memory address
 #### The memory address of an array is found using the address-of operator: &. When run in Microsoft Visual Studio, it will provide the base memory address in hexidecimal. This only partially represents where the array is stored in memory. The entire array is actually stored in one continuous block of memory, the size of which is determined by the number of elements it contains.
 #### In the following example, the console will output the base memory address and the memory address of the last element. The addresses are almost identical but vary slightly.
