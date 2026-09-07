@@ -78,7 +78,15 @@ int main()
 ### A binary search has a worst-case time complexity of $O(log_2N)$ to account for the maximum number of times the remaining sorted space must be divided by 2 to reach a target value.
 ### A linear search does not require that an array be sorted since it checks each value on an individual basis, regardless of what any of the other values might be. Binary searches are not at all efficient for unsorted arrays since the very nature of the conditions within its algorithm is based on a sorted array. This is demonstrated in the comparisons between $A[m]$ and $T$: $A[m] < T$ and $A[m] > T$. If it is used on an unsorted array, the binary search may mistakenly skip over the target value multiple times and declare that it does not exist within the array.
 ## 5. Randomized Search
-Part C.
+### Part A. 
+```Pseudocode
+function
+```
+### Part B. 
+#### The best-case time complexity for this randomized search is $O(1)$. It may be a slim chance, but there is still the possibility that the algorithm will find the target value at the first-searched index.
+#### The average-case time complexity is $O(\frac{N}{2})$. Dividing the numbers of comparisons by the number of iterations leads to a value that is approximately half of the number of elements in the array.
+#### The worst-case time complexity is $O(N)$ in the scenarios when the algorithm will have to loop through all the randomized indices and find the target value at the last randomly-selected index.
+### Part C.
 ```C++
 #include<iostream>
 #include<vector>
@@ -100,43 +108,53 @@ bool findElement(vector<int> list, int value)
 int main()
 {
 	vector<int> elements(100000);
-	vector<int> randomIndices(100000);
+	vector<int> randomIndices;
 
-	int randomComparisons;
 	int target;
+	int value = 1;
+	int randomComparisons = 0;
 
-srand(time(0));
+	srand(time(0));
 
-for (int i = 0; i < elements.size(); i++)
-{
-	int randomIndex = rand() % (elements.size() + 1);
-	if (findElement(list, randomIndex) == false)
-	{
-		list.push_back(randomIndex);
-	}
-	else
-	{
-		i--;
-	}
-}
+	cout << "Enter a target value: ";
+	cin >> target;
 
-for (int j = 0; j < elements.size(); j++)
-{
-	if (elements.at(list.at(j)) == target)
+	for (int i = 0; i < elements.size(); i++)
 	{
-		cout << "Target was found at index: " << list.at(j) << "\n";
-		cout << "Number of linear comparisons for target (" << target << ") : " << randomComparisons << "\n";
-		break;
+	elements.at(i) = value;
+	value++;
 	}
-	else if (j < elements.size())
+
+	for (int j = 0; j < elements.size(); j++)
 	{
-		randomComparisons++;
+		int randomIndex = rand() % (elements.size() + 1);
+		if (findElement(randomIndices, randomIndex) == false)
+		{
+			randomIndices.push_back(randomIndex);
+		}
+		else
+		{
+			j--;
+		}
 	}
-	else
+
+	for (int k = 0; k < elements.size(); k++)
 	{
-		cout << "Target was not found.";
+		if (elements.at(randomIndices.at(k)) == target)
+		{
+			cout << "Target was found at index: " << randomIndices.at(k) << "\n";
+			cout << "Number of random comparisons for target (" << target << ") : " << randomComparisons << "\n";
+			break;
+		}
+		else if (k < elements.size())
+		{
+			randomComparisons++;
+		}
+		else
+		{
+			cout << "Target was not found.";
+		}
 	}
-}
 
 	return 0;
 }
