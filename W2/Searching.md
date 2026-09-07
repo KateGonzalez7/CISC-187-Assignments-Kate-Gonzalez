@@ -80,7 +80,32 @@ int main()
 ## 5. Randomized Search
 ### Part A. 
 ```Pseudocode
-function
+function findIndex(vector, index)
+	loop through vector.size()
+		if vector.at(i) == index
+			return true;
+	return false;
+main
+	vector elements;
+	vector indices;
+	int comparisons;
+
+	srand() generator;
+	loop through elements.size()
+		rand num = rand() % (elements.size() + 1);
+		if findIndex(indices, rand num) == false
+			indices.push_back(rand number);
+		else decrement if duplicate
+
+	loop through elements.size()
+		if element.at(rand index) = target
+			cout << "Target was found.";
+			cout << "Number of comparisons: " << comparisons << "\n";
+			break;
+		else if (loop index < elements.size())
+			comparisons++;
+		else
+			cout << "Target was not found.";
 ```
 ### Part B. 
 #### The best-case time complexity for this randomized search is $O(1)$. It may be a slim chance, but there is still the possibility that the algorithm will find the target value at the first-searched index.
@@ -93,7 +118,7 @@ function
 #include<random>
 using namespace std;
 
-bool findElement(vector<int> list, int value)
+bool findIndex(vector<int> list, int value)
 {
 	for (int i = 0; i < list.size(); i++)
 	{
@@ -128,7 +153,7 @@ int main()
 	for (int j = 0; j < elements.size(); j++)
 	{
 		int randomIndex = rand() % (elements.size() + 1);
-		if (findElement(randomIndices, randomIndex) == false)
+		if (findIndex(randomIndices, randomIndex) == false)
 		{
 			randomIndices.push_back(randomIndex);
 		}
@@ -159,3 +184,9 @@ int main()
 	return 0;
 }
 ```
+### Part D.
+#### The best-, average-, and worst-case time complexities for each algorithm are as follows:
+#### Linear - Best: $O(1)$. Average: $O(\frac{N}{2})$. Worst: $O(N)$.
+#### Binary - Best: $O(1)$. Average: $O(\frac{N}{2})$. Worst: $O(log_2N)$.
+#### Randomized - Best: $O(1)$. Average: $O(\frac{N}{2})$. Worst: $O(N)$.
+#### The data need not be sorted for linear or randomized searches since their comparisons are irrespective of the order of the elements. Binary searches require a sorted array for maximum efficiency. When searching through 100,000 elements, it is best to use binary search on a sorted array. This is due to the maximum number of comparisons being 17 as opposed to linear and randomized searches, which will be 100,000 for either. As great as it seems to default to binary searches based on this alone, it is good to consider the fact that it will not produce the same results for an unsorted array. In fact, it is actually worse due to the possibility that it may incorrectly state that the target value does not exist in the array. In that case, it would be better to use a linear search to avoid this issue even if it comes at the cost of a higher resource usage. A randomized algorithm is not inherently better than a linear algorithm given that they share practically the same average and worst time complexities. However, it could potentially be useful for situations that call for randomization, such as in statistics.
