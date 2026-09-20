@@ -1,0 +1,7 @@
+# Homework 3-4 1/3: Sorting-I
+### 1. Linear Complexity
+#### The time complexity of this algorithm would be $O(N)$. Big O Notation only considers the polynomial degree, because the constants and multipliers do not affect the proportional growth of the steps. The growth remains linear when the algorithm handles immense amounts of data.
+### 2. Quadratic Complexity
+#### The time complexity of this algorithm is best described as $O(N^2)$. In the worst case scenario, the number of steps required will approximately equal the square of N. For an input of size 20, the estimated number of operations would be 400. For an input of size 40, there will be about 1600 operations, and so on.
+### 3. Analyzing Multiple Sequential Loops
+#### For an array containing N elements, the first loop conducts 2N operations. One set of N operations for the doubling of each element, and another set accounts for adding each element to the total sum. The second loop also conducts 2N operations. Therefore, the total amount of work for this algorithm can be expressed as 2N. In Big O Notation, the time complexity of the algorithm is $O(N)$. Two sequential loops does not change the nature of the time complexity since multipliers do not affect the growth of operations in a significant way. The total amount of work can be expressed linearly since the number of operations is only dependent on the number of elements in the array. There are no swaps or insertions involved that would exponentially increase the growth of operations.
