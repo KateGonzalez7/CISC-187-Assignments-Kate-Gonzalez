@@ -20,4 +20,19 @@
 ### 3. Improving a Search Algorithm
 #### Part A. Complexity Analysis
 #### When "X" is the first character, this is the best-case scenario and the Big O time complexity is expressed as $O(1)$ since there is only one operation. However, if "X" is placed near the middle of the string, the behavior is described as $\frac{N}{2}$. Portrayed in Big O Notation, the algorithm's time complexity in an average-case scenario is $O(N)$. The time complexity for the worst-case scenario is likewise $O(N)$ when "X" is at the end of the string given that it will require $N$ operations to find it. Even if "X" is not present in the string, the algorithm will search through all of the characters and exhibit $O(N)$ behavior. It does not know whether or not "X" is a character within the string to begin with, which is why it must inspect every index.
+#### Part B. Improve the Algorithm
+```javascript
+function containsX(string) {
+    foundX = false;
 
+    for (let i = 0; i < string.length; i++) {
+        if (string[i] === "X") {
+            foundX = true;
+            break;
+        }
+    }
+
+    return foundX;
+}
+```
+#### Part C. Analyze the Improved Version
