@@ -36,3 +36,4 @@ function containsX(string) {
 }
 ```
 #### Part C. Analyze the Improved Version
+#### The time complexities of the best-, average-, and worst-case scenarios in Big O Notation remain unchanged. At best, the algorithm may only perform $1$ operation. Since "X" may be found near the end as well as near the beginning, the average behavior is still estimated to be $\frac{N}{2}$. Even with the break function, it will not matter during the worst-case scenarios in which "X" is at $N - 1$. However, technically speaking, the actual number of operations performed will be reduced significantly by around half since the algorithm will cease its iterations once it has found "X". It no longer needs to execute unnecessary operations.
