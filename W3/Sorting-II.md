@@ -15,7 +15,8 @@
 #### Part C. 
 <img width="1516" height="2772" alt="1000055947" src="https://github.com/user-attachments/assets/2c1c7baf-28b2-409f-9494-6e7b3473cc28" />
 
-### Part D.
+#### Part D.
 #### Insertion Sort begins at $i = 1$ to account for all elements in the array. As seen by changing it to $i = 2$ or $i = 3$, the array is not sorted properly due to the larger elements being placed near the beginning of the array. Starting at $i = 2$ resulted in the largest and second-largest elements swapping places. Using the algorithm when $i = 3$ caused only the first two elements to be sorted. The final version of the array appeared to have shifted twice to the right and wrapped back around. Changing the initial value of $i$ would require the values before it to already be sorted. Insertion sort performs under the assumption that the first element is sorted since there is no element that precedes it. Reducing the number of iterations requires a change in structure for insertion sort. The algorithm was created for a scenario in which the first two elements must be compared at the start. If that is not occurring, then it must be changed to account for the discrepancy.
-
+### 3. Improving a Search Algorithm
+#### 
 
