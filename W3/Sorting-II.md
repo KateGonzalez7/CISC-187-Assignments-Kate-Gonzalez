@@ -4,3 +4,5 @@
 #### In each iteration of an average-case scenario, the number of swaps and comparisons is approximately equal to $\frac{N^2}{2}$. Regarding the diagram example with $N = 5$ elements, the resulting number of swaps and comparisons comes out to $11$. Substituting $N$ for the array size gives us: $\frac{5^2}{2} = \frac{25}{2} = 12.5$. It may not be the exact match but it is a close estimate, especially when one considers the countless variations of average-case scenarios. 
 #### In terms of Big O Notation, the behavior of the algorithm is notated as $O(N^2)$. The quadratic growth of the number of operations is due to the fact that, the inspected elements can be compared against and swapped with nearly all other elements for each iteration. For one iteration, this is approximately $N$. So, $N$ elements multiplied by $N$ swaps and comparisons per iteration leads to a behavior represented as $N^2$.
 <img width="511" height="1010" alt="InsertionSort" src="https://github.com/user-attachments/assets/68c8e94a-417f-4b25-8c48-8c64f2b345e2" />
+### 2. Changing the Starting Position of Insertion Sort
+#### 
