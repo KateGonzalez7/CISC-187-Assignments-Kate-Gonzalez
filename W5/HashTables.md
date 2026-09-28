@@ -28,3 +28,154 @@ int hashFunction(int key, int tableSize)
 	return index;
 }
 ```
+### Parts 3 & 4.
+```C++
+#include<iostream>
+#include<string>
+#include<vector>
+
+int hashFunction(int key, int tableSize)
+{
+	int sum = 0;
+	int index;
+
+	while (key != 0)
+	{
+		int last = key % tableSize;
+
+		sum += last;
+
+		key /= tableSize;
+	}
+
+	index = sum % tableSize;
+
+	return index;
+}
+
+struct Record
+{
+	int key = 0;
+	std::string value = "";
+};
+
+int main()
+{
+	std::vector<Record> records(11);
+	Record clientInfo;
+	std::string name;
+	int choice;
+	int recordNumber;
+	int index;
+
+	std::cout << "Type a number to make your choice or -1 to exit. " << "\n";
+	std::cout << "1. Placement \n2. Search \n3. Deletion \nChoice: ";
+	std::cin >> choice;
+
+	while (choice != -1)
+	{
+		switch (choice)
+		{
+			case 1:
+
+				std::cout << "Enter the record number: ";
+				std::cin >> recordNumber;
+				if (recordNumber > 0)
+				{
+					clientInfo.key = recordNumber;
+				}
+
+				std::cout << "Enter the client's name: ";
+				std::cin.ignore();
+				getline(std::cin, name);
+				clientInfo.value = name;
+
+				index = hashFunction(recordNumber, records.size());
+
+				if (records.at(index).value.length() == 0)
+				{
+					records.at(index) = clientInfo;
+				}
+				else
+				{
+					for (int i = 0; i < records.size(); i++)
+					{
+						int probeIndex = (index + i) % records.size();
+
+						if (records.at(probeIndex).key == clientInfo.key && records.at(probeIndex).value.length() > 0)
+						{
+							records.at(probeIndex).value = clientInfo.value;
+							break;
+						}
+						else if (records.at(probeIndex).value == "")
+						{
+							records.at(probeIndex) = clientInfo;
+							break;
+						}
+					}
+				}
+
+				std::cout << "\n--- TABLE ---\n";
+
+				for (int i = 0; i < records.size(); i++)
+				{
+					std::cout << i << ": "
+						<< records.at(i).key << " | "
+						<< records.at(i).value << "\n";
+				}
+
+				std::cout << "-------------\n";
+
+				break;
+
+			case 2:
+			{
+				bool found = false;
+
+				std::cout << "Enter the record number: ";
+				std::cin >> recordNumber;
+
+				index = hashFunction(recordNumber, records.size());
+
+				for (int i = 0; i < records.size(); i++)
+				{
+					int probeIndex = (index + i) % records.size();
+					
+					if (records.at(probeIndex).key == recordNumber)
+					{
+						std::cout << "Client name: " << records.at(probeIndex).value << "\n";
+						found = true;
+						break;
+					}
+				}
+
+				if (!found)
+				{
+					std::cout << "Record was not found.\n";
+				}
+
+				break;
+			}
+			case 3:
+
+				std::cout << "Enter record number of slot for deletion: ";
+				std::cin >> recordNumber;
+
+				index = hashFunction(recordNumber, records.size());
+
+				for (int i = index; i < records.size(); i++)
+				{
+					if (records.at(i).key == recordNumber)
+					{
+						records.at(i).key = 0;
+						records.at(i).value = "mark";
+					}
+				}
+				break;
+		}
+		std::cout << "Choice: ";
+		std::cin >> choice;
+	}
+	return 0;
+}
+```
