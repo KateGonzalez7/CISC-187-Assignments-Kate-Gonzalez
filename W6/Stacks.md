@@ -78,4 +78,31 @@ void push(int value)
     }
 }
 ```
-#### Analysis: Writing beyond $data[CAPACITY - 1]$ is impossible due to a few reasons. One is that the array is not mutable, so its capacity remains fixed. Another reason lies in the fact that executing this would return an out-of-bounds exception. [CAPACITY - 1] represents the final index of the array, which means that there are no indices past this point.
+#### Analysis: Writing beyond $data[CAPACITY - 1]$ is impossible due to a few reasons. One is that the array is not mutable, so its capacity remains fixed. Another reason lies in the fact that executing this would return an out-of-bounds exception. $[CAPACITY - 1]$ represents the final index of the array, which means that there are no indices past this point.
+### Part 5.
+```C++
+int pop()
+{
+    int value = data[topIndex];
+
+    topIndex--;
+
+    return value;
+}
+```
+#### Analysis: Accessing $data[topIndex]$ when $topIndex = -1$ is not a valid operation since an array cannot have negative indices.
+### Part 6.
+```C++
+int top() const
+{
+    if (topIndex == -1)
+    {
+        throw underflow_error("Stack underflow");
+    }
+    else
+    {
+        return data[topIndex];
+    }
+}
+```
+#### top() vs. pop(): top() is a function that allows users to view the top element of the stack. It merely returns a value without changing the structure. On the other hand, pop() is a function that removes the top element in a stack, thereby reducing its size.
