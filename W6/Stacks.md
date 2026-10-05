@@ -63,3 +63,19 @@ class Stack {
 };
 ```
 #### Analysis: Top index needs to be initialized as $-1$ since initializing it as $0$ indicates that there must be an element at index $0$. For this reason, $-1$ can be used to signify an empty stack. The stack size is $topIndex + 1$ due to indices starting at $0$ rather than $1$. The plus one accounts for this convention. A stack is full when top index is equal to $size - 1$ for the aforementioned reason involving the standard for array indices.
+### Part 4.
+```C++
+void push(int value)
+{
+    if (topIndex + 1 != CAPACITY)
+    {
+        ++topIndex;
+        data[topIndex] = value;
+    }
+    else if (topIndex + 1 == CAPACITY)
+    {
+        throw overflow_error("Stack overflow");
+    }
+}
+```
+#### Analysis: Writing beyond $data[CAPACITY - 1]$ is impossible due to a few reasons. One is that the array is not mutable, so its capacity remains fixed. Another reason lies in the fact that executing this would return an out-of-bounds exception. [CAPACITY - 1] represents the final index of the array, which means that there are no indices past this point.
