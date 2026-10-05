@@ -108,3 +108,18 @@ int dequeue()
 }
 ```
 #### Analysis: dequeue() should advance frontIndex rather than shifting all remaining elements to maintain a constant time complexity, $O(1)$, and increase the efficiency of memory usage. It removes the redundancy of shifting elements in a circular queue that does not have a logically definitive end point as a linear queue does.
+### Part 7.
+```C++
+int front() const
+{
+    if (frontIndex == -1)
+    {
+        throw underflow_error("Stack underflow");
+    }
+    else
+    {
+        return data[frontIndex];
+    }
+}
+```
+#### Analysis: front() does not change anything in the array as it only returns the first value stored in the queue. However, dequeue() removes that first value, shifts the frontIndex, and reduces the size of the circular queue.
