@@ -68,3 +68,43 @@ class Queue
 };
 ```
 #### Analysis: Count is a variable that represents the number of elements currently stored in the queue. If $count = 0$, this indicates that no elements have been stores, hence an empty queue. When $count == CAPACITY$ is true, the number of elements in the queue has reached the maximum capacity initialized in the program. It means that the queue is full and can no longer store additional elements. $frontIndex == rearIndex$ may have one of two meanings. The circular queue is either empty or full. In the first case, the circular queue is empty because both variables are $0$. In the second case, the circular queue is full once rearIndex wraps around and meets frontIndex Using mathematical terms, this is represented as $(rear + 1) mod N = front$. To avoid any misinterpretations, the variable count is used. This allows the size of the queue to be tracked as frequently as needed with minimal operations.
+### Part 5.
+```C++
+void enqueue(int value)
+{
+    if (count != CAPACITY)
+    {
+        data[rearIndex] = value;
+
+        rearIndex = (rearIndex + 1) % CAPACITY;
+
+        count++;
+    }
+    else if (count == CAPACITY)
+    {
+        throw overflow_error("Queue overflow");
+    }
+}
+```
+#### Analysis: Using $rearIndex++$ will cause an out-of-bounds exception when the program attempts to access $data[rearIndex]$ when $rearIndex > CAPACITY$. In addition, it treats the queue as linear rather than circular.
+### Part 6.
+```C++
+int dequeue()
+{
+    if (count != 0)
+    {
+        int tempVal = data[frontIndex];
+
+        frontIndex = (frontIndex + 1) % CAPACITY;
+
+        count--;
+
+        return tempVal;
+    }
+    else if (count == 0)
+    {
+        throw underflow_error("Queue underflow");
+    }
+}
+```
+#### Analysis: dequeue() should advance frontIndex rather than shifting all remaining elements to maintain a constant time complexity, $O(1)$, and increase the efficiency of memory usage. It removes the redundancy of shifting elements in a circular queue that does not have a logically definitive end point as a linear queue does.
