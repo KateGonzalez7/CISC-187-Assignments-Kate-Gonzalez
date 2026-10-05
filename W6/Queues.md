@@ -13,3 +13,58 @@
 #### The final front element is $30$, and the final queue size is $4$. The elements in the final iteration of the queue would be removed starting with $30$, then $40$, $50$, and finally $60$. By the end of all operations, $10$ and $20$ are removed in that order from the queue. This means queues follow a first-in, first-out policy, especially considering that the elements in the rear remained untouched.
 ### Part 2.
 #### If the queue contains $N$ elements, then a dequeue() operation with this approach will require $N - 1$ shifts to the left. Performing this method has a time complexity of $O(N)$ due to the number of shifts for a dequeue() being approximately $N$. Repeating this process for $N$ elements means that $N$ elements multiplied by the number of shifts per dequeue(), $~N$, results in $N * N = N^2$ work. As a result, the time complexity becomes $O(N^2)$.
+### Part 3 & 4.
+```C++
+#include <iostream>
+#include <stdexcept>
+
+using namespace std;
+
+class Queue 
+{
+    private:
+        static const int CAPACITY = 10;
+
+        int data[CAPACITY] = {};
+        int frontIndex;
+        int rearIndex;
+        int count;
+
+    public:
+        Queue()
+        {
+            data;
+            frontIndex = 0;
+            rearIndex = 0;
+            count = 0;
+        }
+
+        bool empty() const
+        {
+            if (count == 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        bool full() const
+        {
+            if (count == CAPACITY)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        int size() const
+        {
+            return count;
+        }
+
+        void enqueue(int value);
+        int dequeue();
+        int front() const;
+};
+```
+#### Analysis: Count is a variable that represents the number of elements currently stored in the queue. If $count = 0$, this indicates that no elements have been stores, hence an empty queue. When $count == CAPACITY$ is true, the number of elements in the queue has reached the maximum capacity initialized in the program. It means that the queue is full and can no longer store additional elements. $frontIndex == rearIndex$ may have one of two meanings. The circular queue is either empty or full. In the first case, the circular queue is empty because both variables are $0$. In the second case, the circular queue is full once rearIndex wraps around and meets frontIndex Using mathematical terms, this is represented as $(rear + 1) mod N = front$. To avoid any misinterpretations, the variable count is used. This allows the size of the queue to be tracked as frequently as needed with minimal operations.
