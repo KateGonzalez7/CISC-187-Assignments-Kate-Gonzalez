@@ -114,7 +114,7 @@ int front() const
 {
     if (frontIndex == -1)
     {
-        throw underflow_error("Stack underflow");
+        throw underflow_error("Queue underflow");
     }
     else
     {
