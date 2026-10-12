@@ -1,6 +1,7 @@
 # Homework 7 1/1: Linked Lists
 ### Part 1.
 <img width="512" height="104" alt="LinkedList" src="https://github.com/user-attachments/assets/bf025093-c241-49b8-bdcd-fbf462395cb1" />
+
 #### Analysis: The head pointer does not contain any data as it merely stores the memory location to the first node. first->next contains the memory location to the subsequent node, which is the second node. third->next contains a null pointer since there is no node that comes after the third, which is the termination of the linked list. If the head pointer was lost, the list becomes inaccessible since there is no longer a reference to the location of the first node.
 ### Part 2.
 | Iteration | temp->data | Where temp->next leads |
