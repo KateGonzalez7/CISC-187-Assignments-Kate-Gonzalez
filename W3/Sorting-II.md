@@ -26,7 +26,7 @@ function containsX(string) {
     foundX = false;
 
     for (let i = 0; i < string.length; i++) {
-        if (string[i] === "X") {
+        if (string[i] == "X") {
             foundX = true;
             break;
         }
