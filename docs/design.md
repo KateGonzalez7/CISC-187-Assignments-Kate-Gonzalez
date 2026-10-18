@@ -11,12 +11,10 @@
 #### 
 
 ### Major Functions of Program
-####
-
+#### The program contains functions that handles operations directly involving packages. One of these functions adds the package to the collection, the hashtable, and the queue. Another function processes the foremost package in the queue. There is also one that updates the status of the package. Not every function operates or alters the data. Several are used to display the information of a particular package, the list of waiting packages, a list containing all packages, a list of all packages sorted by a chosen field, and a summary of the entire package system.
 ### Sorting & Report Strategy
-#### Using copy of data structure to prevent alterations to stored data
-
+#### When presenting a sorted report of the packages based on the field chosen by the user, a copy of the data structure is created to prevent alterations to the stored data. This allows for a non-invasive display of information. The copy is sorted using a function that implements the insertion sort algorithm. The sorted copy is then passed to a function that traverses it to print the package information to the console in a readable format for the user.
 ### Importance of Each Data Structure
-#### Vector: This data structure is best used for calculations, because it prevents any inconsistencies that may occur when iterating. These discrepancies involve the hash collisions that may occur when conducting a search on the hashtable, a search that is crucial for determining which packages have a particular status.
-#### Queue: Using a queue to process packages allows for an efficient  kjoj
+#### Vector: This data structure is best used for calculations, because it prevents any inconsistencies that may occur when iterating. These discrepancies involve the hash collisions that may occur when conducting a search on the hashtable. The searches are crucial for determining the count of packages with a particular status or the weight of the heaviest package.
+#### Queue: Using a queue to process packages generates an efficient flow when changing the status of a package from "Waiting" to "Processed", because it only stores packages with a "Waiting" status. Attempting to perform this function in a vector will require a substantial amount of work. The vector must be traversed to find the right package to process, there must be another member added to the struct to show the package's "place in the queue", and each status of every package must be checked if it is "Waiting". All of this required work is already handled much more simply in the queue.
 #### Hashtable: The hashtable saves time and resources with an $O(1)$ search in average cases. Traversing the vector has a time complexity of $O(N)$ in average cases. Therefore, in the long run, a linear search performed on the vector will require much more work than performing the search on the hashtable.
