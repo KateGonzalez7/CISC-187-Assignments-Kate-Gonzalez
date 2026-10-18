@@ -1,7 +1,7 @@
 # Pseudocode
 ### Adding Packages
 ```C++
-global variable package
+variable package
 
 while validNum != true
   cin package.trackingNumber
@@ -102,6 +102,7 @@ for i from 0 to packages size
   if packages.at(i).trackingNumber equals tracking
     print package details
     break
+  i++
 ```
 ### Status Updates
 ```C++
@@ -158,8 +159,63 @@ if waitingPackages size != 0
     cout weight using waitingPackages.front().weight
     cout status using waitingPackages.front().status
     waitingPackages.pop()
+    i++
 ```
-### Sorting
+### Sorting Algorithm For Any Field
 ```C++
+vector<Package> copyRecords is copy of original package records
+if original records size is 0
+  cout "No packages to sort."
+else
+  for int from 1 to copyRecords.size()
+    key is package copyRecords.at(i)
+    int j = i - 1
+    while j >= 0 and key.field < copyRecords.at(j).field
+      copyRecords.at(j + 1) = copyRecords.at(j)
+      --j
+    copyRecords.at(j + 1) = key
+    i++
 ```
 ### Summary Calculations
+```C++
+total packages = vectorForPackages.size()
+waiting packages = queueForPackages.size()
+
+// Algorithm for processed, in transit, and delivered packages
+int count = 0
+for i from 0 to vectorForPackages.size()
+  if status of vectorForPackages at i == "Processed" (or "In Transit" or "Delivered")
+    count++
+  i++
+return count
+
+// Algorithm for total package weight
+totalWeight = 0
+if vectorForPackages size is 0
+  cout "No packages to weigh"
+else
+  for i from 0 to vectorForPackages size
+    totalWeight += weight of vectorForPackages at i
+    i++
+return totalWeight
+
+// Algorithm for average package weight
+averagePackageWeight = 0
+if vectorForPackages size is 0
+  cout "No packages to weigh"
+else
+  averageWeight = totalWeight / vectorForPackages.size()
+return averageWeight
+
+// Algorithm for heaviest package
+heaviest = 0
+if vectorForPackages size is 0
+  cout "No packages to weigh"
+else
+  heaviest = weight of vectorForPackages.at(0)
+  for i from 0 to vectorForPackages size
+    if heaviest < vectorForPackages weight at i
+      heaviest = vectorForPackages weight at i
+    i++
+return heaviest
+```
