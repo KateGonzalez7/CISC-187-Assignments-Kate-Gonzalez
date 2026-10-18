@@ -51,11 +51,64 @@ hashtableForPackages[package.trackingNumber] = package
 package.status = "Waiting"
 ```
 ### Duplicate Checks
+```C++
+bool checkForDuplicates(newTrackingNum, vectorForPackages)
+  if vectorForPackages is empty
+    return false
+  if newTrackingNum has spaces between numbers
+    remove spaces
+  if vectorForPackages.contains(newTrackingNum)
+    return true
+  return false
+```
 ### Enqueue/Dequeue
+```C++
+// Enqueue (see Adding Packages)
+queueForPackages.push(package)
+// Dequeue 
+if queue is empty
+  cout "Error no packages"
+else
+  Package processed = queueForPackages.front()
+  queueForPackages.pop()
+  change status of package in hashtableForPackages to "Processed"
+  printPackageDetails(processed)
+```
 ### Hash Lookup
+```C++
+bool hashtableLookup(trackingNum, hashtable)
+validNumber = false
+if trackingNumber is empty
+  cout "Error tracking number cannot be empty"
+  validNumber = false
+else if trackingNumber is invalid
+  cout "Error tracking number must be valid"
+  validNumber = false
+else if hashtable is empty
+  cout "No packages available for search"
+  validNumber = false
+else if hashtable does not contain trackingNumber
+  cout "No package with that tracking number"
+  validNumber = false
+else if hashtable contains trackingNumber
+  cout package information
+  validNumber = true
+return validNumber
+```
 ### Linear Search
+```C++
+void linearSearchByTrackingNumber(tracking, packages)
+for i from 0 to packages size
+  if packages.at(i).trackingNumber equals tracking
+    print package details
+    break
+```
 ### Status Updates
+```C++
+
+```
 ### Non-destructive Queue Qisplay
+
 ### Sorting
-#### 
+
 ### Summary Calculations
