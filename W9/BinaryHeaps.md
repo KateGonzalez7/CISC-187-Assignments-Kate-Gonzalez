@@ -24,3 +24,6 @@
 #### Index 4: Parent index $= \frac{(4 - 1)}{2} = \frac{3}{2} = 1$. Does not have child nodes.
 #### Index 5: Parent index $= \frac{(5 - 1)}{2} = \frac{4}{2} = 2$. Does not have child nodes.
 ### Part 4.
+#### The array feature of direct access via index solved the heap's last node problem. This is because of the last node being stored at the last index of an array, which is easily accessible and can be done with $O(1)$ work. Before being shifted to a proper location, a newly placed value is first inserted at the very last index. The end of the array represents the bottom row of nodes which may have empty positions, or it may create a new row starting logically at the left of the heap. In either case, this insertion complies with the complete tree rule. Removing the final array element preserves this rule as well since it represents the rightmost node of a heap in the bottom row. When it is deleted, it does not leave a logical gap between nodes, which is why this works. A linked-node implementation would require a traversal that has a complexity of $O(N)$ due to the heap not being properly sorted and a lack of index access.
+### Part 5.
+#### 
