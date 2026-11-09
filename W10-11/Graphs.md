@@ -123,6 +123,7 @@ void bfs(int start) const
 }
 ```
 | Step | Visited Vertex | Queue | Discovered Vertices |
+| ---- | -------------- | ----- | ------------------- |
 | 1    | None           | A     | A                   |
 | 2    | A              | B, D  | A, B, D             |
 | 3    | B              | D, C, E | A, B, D, C, E     |
