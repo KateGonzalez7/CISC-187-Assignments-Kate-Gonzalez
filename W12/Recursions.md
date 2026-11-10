@@ -94,4 +94,11 @@ int sumTo(int n)
 | sumTo(3) | 3 + sumTo(2)   | 6              |
 | sumTo(4) | 4 + sumTo(3)   | 10             |
 ### Part 10.
+#### Loop-based Countdown vs. Recursive Countdown
+| Question | Response |
+| -------- | -------- |
+| Easier to read? | Loop-based |
+| Uses call stack? | Recursive |
+| Is recursion more efficient? | Not in this particular case. |
+| Why is loop preferable? | The loop is more readable and takes up less memory for basic functions. |
 
