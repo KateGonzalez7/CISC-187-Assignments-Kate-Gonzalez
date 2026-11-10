@@ -60,5 +60,38 @@ void countdown(int start)
 | 2               | factorial(2) |
 | 3               | factorial(3) |
 | 4               | factorial(4) |
-#### There is no definitive value in the previously called functions that can determine the result. It depends entirely on the value in the base case, which returns a concrete value of $1$. Once the function with the base case is called, then the previous function called (factorial(2)) can return the real number $2$ and so on until factorial(4) is reached.
+#### There is no definitive value in the previously called functions that can determine the result. It depends entirely on the value in the base case, which returns a concrete value of $1$. Once the function with the base case is called, then the previous function called ($factorial(2)$) can return the real number $2$ and so on until $factorial(4)$ is reached.
 ### Part 7.
+| Function | Expression | Returned Value |
+| -------- | ---------- | -------------- |
+| factorial(1) | 1      | 1              |
+| factorial(2) | 2 * factorial(1) | 2    |
+| factorial(3) | 3 * factorial(2) | 6    |
+| factorial(4) | 4 * factorial(3) | 24   |
+#### The value is being passed from the child invocation up to the parent invocation, which itself is a child invocation of a parent. It is being passed up through the call stack, whose order begins from the recursive call with the base case and ends at the first call in the stack.
+### Part 8.
+#### Example A: This function contains a base case of $0$. The base case will never be reached if the value passed to the parameter is a positive number, because that value will only increase with each recursive call. The base case can only be reached if $n <= 0$. To correct this issue requires rewriting line $6$ to be
+```C++
+mystery(n - 1);
+```
+#### Example B: This function eventually causes a stack overflow due to the lack of a base case to terminate the recursive calls. The number will decrease without end until the computer runs out of space in short-term memory.
+### Part 9.
+#### The base case is $1$ since the function will terminate once $n$ reaches $1$. The recursive case is $n + sumTo(n - 1)$, because it continues the recursive calls when $n > 1$. The recursive call moves by decrementing $n$ by $1$ until the base case, $1$, is reached.
+```C++
+int sumTo(int n)
+{
+	if (n == 1)
+	{
+		return 1;
+	}
+	return n + sumTo(n - 1);
+}
+```
+| Function | Recursive Call | Returned Value |
+| -------- | -------------- | -------------- |
+| sumTo(1) | None           | 1              |
+| sumTo(2) | 2 + sumTo(1)   | 3              |
+| sumTo(3) | 3 + sumTo(2)   | 6              |
+| sumTo(4) | 4 + sumTo(3)   | 10             |
+### Part 10.
+
