@@ -101,4 +101,7 @@ int sumTo(int n)
 | Uses call stack? | Recursive |
 | Is recursion more efficient? | Not in this particular case. |
 | Why is loop preferable? | The loop is more readable and takes up less memory for basic functions. |
+### Part 11.
+#### 1. Recursion fits this situation well, because the program can keep track of the number of sub-directories and visit each of them with every recursive call. It allows for an efficient way to break each of the directories into smaller parts, as we've previously done with the $sumTo(n)$ and $factorial(n)$ functions. 
+#### 2. Any sub-directories can be assigned a value of 1 to indicate they contain multiple files within themselves, while standalone files are assigned a value of 0 to show that they are not sub-directories. All of the values of the sub-directories and files can be added. If the result is $0$, this is our base case that demonstrates there are no sub-directories along the path that was taken.
 
