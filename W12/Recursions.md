@@ -103,5 +103,17 @@ int sumTo(int n)
 | Why is loop preferable? | The loop is more readable and takes up less memory for basic functions. |
 ### Part 11.
 #### 1. Recursion fits this situation well, because the program can keep track of the number of sub-directories and visit each of them with every recursive call. It allows for an efficient way to break each of the directories into smaller parts, as we've previously done with the $sumTo(n)$ and $factorial(n)$ functions. 
-#### 2. Any sub-directories can be assigned a value of 1 to indicate they contain multiple files within themselves, while standalone files are assigned a value of 0 to show that they are not sub-directories. All of the values of the sub-directories and files can be added. If the result is $0$, this is our base case that demonstrates there are no sub-directories along the path that was taken.
+#### 2 & 3. Any sub-directories can be assigned a value of $1$ to indicate they contain multiple files within themselves, while standalone files are assigned a value of $0$ to show that they are not sub-directories. All of the values of the sub-directories and files can be added. If the result is $0$, this is our base case that demonstrates there are no sub-directories along the path that was taken. Any other case is a recursive case that will traverse the next visited sub-directory.
+#### 4. The lack of information of the longest path length is what can cause some difficulty. This is why a recursion function works, because it does not require the aforementioned information to operate. It merely relies on whether or not there continue to be sub-directories.
+```C++
+traversal(directory)
+counter variable = 0
+for all content in directory
+	if visited content is subdirectory
+		counter increments by 1
+		return traversal(subdirectory)
+	perform desired operation on selected content (i.e. print name)
+if counter is zero because no subdirectories
+	return
+```
 
